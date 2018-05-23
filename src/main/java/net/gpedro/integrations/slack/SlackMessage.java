@@ -88,7 +88,9 @@ public class SlackMessage {
 		slackMessage.addProperty(LINK_NAMES, linkNames);
 
 		if (text == null) {
-			throw new IllegalArgumentException("Missing Text field @ SlackMessage");
+			if (attach.isEmpty()) {
+				throw new IllegalArgumentException("Missing Text field @ SlackMessage");
+			}
 		} else {
 			slackMessage.addProperty(TEXT, text);
 		}
